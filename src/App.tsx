@@ -37,6 +37,7 @@ const checkIfHit = (i: number, k: number) => {
   const rows = [];
   const checkRows = [];
   checkRows[0] = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0];
+  checkRows[1] = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   for (let i = 0; i < numRows; i++) {
     rows.push(Array.from(Array(numCols), () => 0));
   }
