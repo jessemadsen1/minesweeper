@@ -7,13 +7,12 @@ import useInterval from "./useInterval";
 const numRows = 10;
 const numCols = 10;
 
-
 //  rows[0]= [1,0,1,0,1,0,1,0,1,0]
 
 const bombTiles = (): number[][] => {
   const rows = [];
   for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => (0)));
+    rows.push(Array.from(Array(numCols), () => 1));
   }
   return rows;
 };
@@ -21,12 +20,12 @@ const bombTiles = (): number[][] => {
 const clearTiles = (): number[][] => {
   const rows = [];
   for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => (0)));
+    rows.push(Array.from(Array(numCols), () => 0));
   }
   return rows;
 };
 
-const checkIfHit = (): number[][] => {
+const initTiles = (): number[][] => {
   const rows = [];
   for (let i = 0; i < numRows; i++) {
     rows.push(Array.from(Array(numCols), () => 0));
@@ -34,10 +33,19 @@ const checkIfHit = (): number[][] => {
   return rows;
 };
 
+const checkIfHit = (i: number, k: number) => {
+  const rows = [];
+  const checkRows = [];
+  checkRows[0] = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0];
+  for (let i = 0; i < numRows; i++) {
+    rows.push(Array.from(Array(numCols), () => 0));
+  }
+  if (checkRows[i][k] == 1) return true;
+};
+
 const App: FC = () => {
   const [grid, setGrid] = useState(() => {
-  
-    return checkIfHit();
+    return initTiles();
   });
 
   const [running, setRunning] = useState(false);
@@ -48,8 +56,6 @@ const App: FC = () => {
     if (!runningRef.current) {
       return;
     }
-
-
   }, []);
 
   return (
@@ -71,8 +77,10 @@ const App: FC = () => {
                 // Deep clone grid
                 let newGrid = JSON.parse(JSON.stringify(grid));
                 newGrid[i][k] = grid[i][k] ? 0 : 1;
-                checkIfHit(i,k);
                 setGrid(newGrid);
+                {
+                  if (checkIfHit(i, k)) setGrid(bombTiles());
+                }
               }}
               style={{
                 width: 20,
