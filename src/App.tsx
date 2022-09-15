@@ -4,6 +4,8 @@ import { setOriginalNode } from "typescript";
 import "./App.css";
 import useInterval from "./useInterval";
 
+import GridButtons from "./components/GridButtons";
+
 const numRows = 10;
 const numCols = 10;
 
@@ -37,7 +39,6 @@ const checkIfHit = (i: number, k: number) => {
   const rows = [];
   const checkRows = [];
   checkRows[0] = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0];
-  checkRows[1] = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   for (let i = 0; i < numRows; i++) {
     rows.push(Array.from(Array(numCols), () => 0));
   }
@@ -73,6 +74,7 @@ const App: FC = () => {
         {grid.map((rows, i) =>
           rows.map((col, k) => (
             <div
+              className="div_hover"
               key={`${i}-${k}`}
               onClick={() => {
                 // Deep clone grid
@@ -120,6 +122,7 @@ const App: FC = () => {
           <span>Clear</span>
         </button>
       </div>
+      <GridButtons gridSize />
     </div>
   );
 };
