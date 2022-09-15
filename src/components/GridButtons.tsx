@@ -1,6 +1,7 @@
 import React from "react";
 import { ButtonToolbar } from "react-bootstrap";
 import { Pause, Play, XCircle, Globe } from "react-feather";
+import "./GridButtons.css"
 
 type GridButtonProp ={
   clearBoard: () => void;
@@ -12,9 +13,9 @@ const GridButtons = ({ clearBoard }: GridButtonProp) => {
   };
 
   return (
-    <ButtonToolbar>
+    <ButtonToolbar aria-label="Toolbar with Button groups">
       <div className="buttons is-centered pt-5">
-        <button className="button start-game mx-2">
+        <button className="button mx-2">
           <span className="icon">
             <Play />
           </span>

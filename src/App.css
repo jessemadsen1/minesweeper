@@ -39,16 +39,13 @@
 h1 {
   text-align: center;
   text-transform: uppercase;
-  color: #4CAF50;
 }
 
 .is-centered {
-
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1em;
-
+  height: 10px
 }
 
 .div_hover {
@@ -58,3 +55,4 @@ h1 {
 .div_hover:hover {
   background-color: #8df19a;
 }
+

@@ -90,16 +90,9 @@ const clearTiles = () => {
           ))
         )}
       </div>
-
-      <div className="buttons is-centered pt-5">
-        <button className="button mx-2">
-          <span className="icon">
-            <XCircle />
-          </span>
-          <span>Clear</span>
-        </button>
+      <div className="is-centered">
+          <GridButtons clearBoard = {clearTiles} />
       </div>
-      <GridButtons clearBoard = {clearTiles} />
     </div>
   );
 };
