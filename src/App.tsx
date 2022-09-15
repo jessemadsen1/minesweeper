@@ -50,15 +50,16 @@ const App: FC = () => {
     return initTiles();
   });
 
-  const [running, setRunning] = useState(false);
-  const runningRef = useRef(running);
-  runningRef.current = running;
+  const [divColor, setDivColor] = useState('blue');
 
-  const runSimulation = useCallback((grid: any) => {
-    if (!runningRef.current) {
-      return;
-    }
-  }, []);
+const bombTiles = (): number[][] => {
+  setDivColor('red')
+  const rows = [];
+  for (let i = 0; i < numRows; i++) {
+    rows.push(Array.from(Array(numCols), () => 1));
+  }
+  return rows;
+};
 
   return (
     <div className="container has-text-centered py-5">
@@ -88,7 +89,7 @@ const App: FC = () => {
               style={{
                 width: 20,
                 height: 20,
-                backgroundColor: grid[i][k] ? "#F68E5F" : undefined,
+                backgroundColor: grid[i][k] ? divColor  : "#FFFFFF",
                 border: "1px solid #595959",
               }}
             ></div>
@@ -97,19 +98,6 @@ const App: FC = () => {
       </div>
 
       <div className="buttons is-centered pt-5">
-        <button
-          className="button start-game mx-2"
-          onClick={() => {
-            setRunning(!running);
-            if (!running) {
-              runningRef.current = true;
-            }
-          }}
-        >
-          <span className="icon">{running ? <Pause /> : <Play />}</span>
-          <span>{running ? "Stop" : "Start"}</span>
-        </button>
-
         <button
           className="button mx-2"
           onClick={() => {
