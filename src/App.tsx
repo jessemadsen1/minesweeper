@@ -11,22 +11,6 @@ const numCols = 10;
 
 //  rows[0]= [1,0,1,0,1,0,1,0,1,0]
 
-const bombTiles = (): number[][] => {
-  const rows = [];
-  for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => 1));
-  }
-  return rows;
-};
-
-const clearTiles = (): number[][] => {
-  const rows = [];
-  for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => 0));
-  }
-  return rows;
-};
-
 const initTiles = (): number[][] => {
   const rows = [];
   for (let i = 0; i < numRows; i++) {
@@ -51,6 +35,7 @@ const App: FC = () => {
   });
 
   const [divColor, setDivColor] = useState('blue');
+  const [onClear, setOnClear] = useState(false);
 
 const bombTiles = (): number[][] => {
   setDivColor('red')
@@ -59,6 +44,15 @@ const bombTiles = (): number[][] => {
     rows.push(Array.from(Array(numCols), () => 1));
   }
   return rows;
+};
+
+const clearTiles = () => {
+  setDivColor("purple");
+  const rows = [];
+  for (let i = 0; i < numRows; i++) {
+    rows.push(Array.from(Array(numCols), () => 0));
+  }
+  setGrid(rows);
 };
 
   return (
@@ -89,7 +83,7 @@ const bombTiles = (): number[][] => {
               style={{
                 width: 20,
                 height: 20,
-                backgroundColor: grid[i][k] ? divColor  : "#FFFFFF",
+                backgroundColor: grid[i][k] ? divColor : undefined,
                 border: "1px solid #595959",
               }}
             ></div>
@@ -98,19 +92,14 @@ const bombTiles = (): number[][] => {
       </div>
 
       <div className="buttons is-centered pt-5">
-        <button
-          className="button mx-2"
-          onClick={() => {
-            setGrid(clearTiles());
-          }}
-        >
+        <button className="button mx-2">
           <span className="icon">
             <XCircle />
           </span>
           <span>Clear</span>
         </button>
       </div>
-      <GridButtons gridSize />
+      <GridButtons clearBoard = {clearTiles} />
     </div>
   );
 };

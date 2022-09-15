@@ -2,8 +2,14 @@ import React from "react";
 import { ButtonToolbar } from "react-bootstrap";
 import { Pause, Play, XCircle, Globe } from "react-feather";
 
-const GridButtons: React.FC<{ gridSize: any }> = () => {
-  const handleSelect = (evt: any) => {};
+type GridButtonProp ={
+  clearBoard: () => void;
+}
+
+const GridButtons = ({ clearBoard }: GridButtonProp) => {
+  const onClearHandler = () => {
+    clearBoard();
+  };
 
   return (
     <ButtonToolbar>
@@ -14,7 +20,7 @@ const GridButtons: React.FC<{ gridSize: any }> = () => {
           </span>
           <span>Start</span>
         </button>
-        <button className="button mx-2" onClick={() => {}}>
+        <button className="button mx-2" onClick={onClearHandler}>
           <span className="icon">
             <XCircle />
           </span>
