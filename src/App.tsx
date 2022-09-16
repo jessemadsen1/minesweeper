@@ -26,7 +26,9 @@ const checkIfHit = (i: number, k: number) => {
   for (let i = 0; i < numRows; i++) {
     rows.push(Array.from(Array(numCols), () => 0));
   }
+  if (i > 0) return false;
   if (checkRows[i][k] == 1) return true;
+  else return false;
 };
 
 const App: FC = () => {
@@ -34,7 +36,7 @@ const App: FC = () => {
     return initTiles();
   });
 
-  const [divColor, setDivColor] = useState('blue');
+  const [divColor, setDivColor] = useState("cyan");
   const [onClear, setOnClear] = useState(false);
 
 const bombTiles = (): number[][] => {
@@ -47,7 +49,7 @@ const bombTiles = (): number[][] => {
 };
 
 const clearTiles = () => {
-  setDivColor("purple");
+  setDivColor("cyan");
   const rows = [];
   for (let i = 0; i < numRows; i++) {
     rows.push(Array.from(Array(numCols), () => 0));
