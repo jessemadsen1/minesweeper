@@ -35,6 +35,5 @@ jobs:
       
     - name: Deploy
       uses: jessemadsen1/actions-gh-pages@v3
-      if: ${{ github.ref == 'refs/heads/main' }}
       with:
         folder: public
