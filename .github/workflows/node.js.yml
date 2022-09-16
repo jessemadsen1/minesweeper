@@ -34,6 +34,6 @@ jobs:
       run: npm run build
       
     - name: Deploy
-      uses: jessemadsen1/minesweeper/actions-gh-pages@v4
+      uses: jessemadsen1/minesweeper/actions-gh-pages@v3
       with:
         folder: build
