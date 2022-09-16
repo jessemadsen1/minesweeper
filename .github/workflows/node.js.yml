@@ -36,4 +36,4 @@ jobs:
     - name: Deploy
       uses: minesweeper/actions-gh-pages@v3
       with:
-        folder: public
+        folder: build
