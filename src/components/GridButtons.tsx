@@ -1,11 +1,11 @@
 import React from "react";
 import { ButtonToolbar } from "react-bootstrap";
-import { Pause, Play, XCircle, Globe } from "react-feather";
-import "./GridButtons.css"
+import { Play, XCircle } from "react-feather";
+import "./GridButtons.css";
 
-type GridButtonProp ={
+type GridButtonProp = {
   clearBoard: () => void;
-}
+};
 
 const GridButtons = ({ clearBoard }: GridButtonProp) => {
   const onClearHandler = () => {

@@ -1,8 +1,5 @@
 import { FC, useState, useRef, useCallback } from "react";
-import { Pause, Play, XCircle, Globe } from "react-feather";
-import { setOriginalNode } from "typescript";
 import "./App.css";
-import useInterval from "./useInterval";
 
 import GridButtons from "./components/GridButtons";
 
@@ -27,7 +24,7 @@ const checkIfHit = (i: number, k: number) => {
     rows.push(Array.from(Array(numCols), () => 0));
   }
   if (i > 0) return false;
-  if (checkRows[i][k] == 1) return true;
+  if (checkRows[i][k] === 1) return true;
   else return false;
 };
 
@@ -37,25 +34,24 @@ const App: FC = () => {
   });
 
   const [divColor, setDivColor] = useState("cyan");
-  const [onClear, setOnClear] = useState(false);
 
-const bombTiles = (): number[][] => {
-  setDivColor('red')
-  const rows = [];
-  for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => 1));
-  }
-  return rows;
-};
+  const bombTiles = (): number[][] => {
+    setDivColor("red");
+    const rows = [];
+    for (let i = 0; i < numRows; i++) {
+      rows.push(Array.from(Array(numCols), () => 1));
+    }
+    return rows;
+  };
 
-const clearTiles = () => {
-  setDivColor("cyan");
-  const rows = [];
-  for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => 0));
-  }
-  setGrid(rows);
-};
+  const clearTiles = () => {
+    setDivColor("cyan");
+    const rows = [];
+    for (let i = 0; i < numRows; i++) {
+      rows.push(Array.from(Array(numCols), () => 0));
+    }
+    setGrid(rows);
+  };
 
   return (
     <div className="container has-text-centered py-5">
@@ -93,7 +89,7 @@ const clearTiles = () => {
         )}
       </div>
       <div className="is-centered">
-          <GridButtons clearBoard = {clearTiles} />
+        <GridButtons clearBoard={clearTiles} />
       </div>
     </div>
   );
