@@ -1,6 +1,6 @@
 {
   "name": "minsweeper",
-  "homepage": "https://jessemadsen1.github.io/minesweeper/",
+  "homepage": "https://jessemadsen1.github.io/minesweeper",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
