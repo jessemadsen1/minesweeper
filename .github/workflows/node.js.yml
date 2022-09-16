@@ -33,7 +33,7 @@ jobs:
     - name: Build
       run: npm run build
       
-    - name: Deploy
-      uses: jessemadsen1/minesweeper@master
-      with:
-        folder: build
+#    - name: Deploy
+#      uses: jessemadsen1/minesweeper@master
+#      with:
+#        folder: build
