@@ -1,5 +1,6 @@
 {
   "name": "minsweeper",
+  "homepage": "https://jessemadsen1.github.io/minesweeper/",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
@@ -16,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-scripts": "5.0.1",
+    "serve": "^14.0.1",
     "typescript": "^4.8.3",
     "web-vitals": "^2.1.4"
   },
