@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import { FC, useState, useRef, useCallback } from "react";
 import "./App.css";
 
@@ -21,9 +21,11 @@ const App: FC = () => {
       <div>
         <BrowserRouter basename="/minesweeper">
           <Routes>
+            <HashRouter>
             <Route path="/" element={<Home />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/leader-board" element={<LeaderBoard />} />
+            </HashRouter>
           </Routes>
         </BrowserRouter>
       </div>
