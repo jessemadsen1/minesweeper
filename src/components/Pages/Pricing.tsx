@@ -21,7 +21,7 @@ function Pricing() {
         free = !free;
         setToggleState1(free);
         setToggleState2(false);
-        setTitle("This isn't your parents minesweeper, it'ffcs worse.")
+        setTitle("This isn't your parents minesweeper, it's much worse.")
       }
     }
     else if (labelString == "Paid") {
@@ -34,7 +34,7 @@ function Pricing() {
       paid = !paid;
       setToggleState1(false);
       setToggleState2(paid);
-      setTitle("Are you sure? This is basically a guessing game.");
+      setTitle("Are you sure? This is basically a really boring guessing game.");
     }
   }
   };
