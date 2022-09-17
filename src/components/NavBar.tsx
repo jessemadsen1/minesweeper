@@ -8,9 +8,10 @@ function NavBar() {
     <>
       <Navbar bg="primary" variant="dark">
         <Container>
-          <Navbar.Brand href="/home">Mine Sweeper</Navbar.Brand>
+          <Navbar.Brand href="/">Mine Sweeper</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/pricing">Pricing</Nav.Link>
+            <Nav.Link href="/leader-board">Leader Board</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

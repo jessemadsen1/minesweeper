@@ -21,24 +21,26 @@ const ToggleSwitch = ({
   };
 
   return (
-    <Card className="outerswitch">
-      {label}
-      <div className="toggle-switch">
-        <input
-          onChange={toggleChangeHandler}
-          type="checkbox"
-          className="checkbox"
-          name={label}
-          id={label}
-          checked={toggleState}
-          //value={this.state.value}
-        />
-        <label className="label" htmlFor={label}>
-          <span className="inner" />
-          <span className="switch" />
-        </label>
-      </div>
-    </Card>
+    <div className="d-flex justify-content-center ">
+      <Card className="outerswitch" >
+        {label}
+        <div className="toggle-switch">
+          <input
+            onChange={toggleChangeHandler}
+            type="checkbox"
+            className="checkbox"
+            name={label}
+            id={label}
+            checked={toggleState}
+            //value={this.state.value}
+          />
+          <label className="label" htmlFor={label}>
+            <span className="inner" />
+            <span className="switch" />
+          </label>
+        </div>
+      </Card>
+    </div>
   );
 };
 

@@ -8,6 +8,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Pricing from "./components/Pages/Pricing";
 import Home from "./components/Pages/Home";
+import LeaderBoard from './components/Pages/LeaderBoard';
 
 
 
@@ -20,8 +21,9 @@ const App: FC = () => {
       <div>
         <BrowserRouter>
           <Routes>
-            <Route path="/home" element={<Home/>} />
+            <Route path="/" element={<Home />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/leader-board" element={<LeaderBoard />} />
           </Routes>
         </BrowserRouter>
       </div>
