@@ -5,30 +5,47 @@ import ToggleSwitch from "../Switch/ToggleSwitch";
 function Pricing() {
   const [toggleState1, setToggleState1] = useState(false);
   const [toggleState2, setToggleState2] = useState(false);
-
+  const [title, setTitle] = useState("Select version you want?");
 
   let free:boolean = false;
   let paid: boolean = false;
-
-
+ 
   const changeToggle = (labelString:string) => {
     console.log("got here 5");
 
     if (labelString == "Free") {
-      free = !free;
-      setToggleState1(free);
-      setToggleState2(false);
+      if (paid == false && free == true){
+          free = !free;
+          setToggleState1(free);
+          setTitle("Select version you want?");
+      }
+      else {
+        free = !free;
+        setToggleState1(free);
+        setToggleState2(false);
+        setTitle("This isn't your parents minesweeper, its worse.")
+      }
     }
     else if (labelString == "Paid") {
+        if (paid == true && free == false){
+          paid = !paid;
+          setToggleState2(paid);
+          setTitle("Select version you want?");
+      }
+      else {
       paid = !paid;
       setToggleState1(false);
       setToggleState2(paid);
+      setTitle("Are you sure? This game is basically a guessing game.");
     }
+  }
   };
 
   return (
     <div>
-      <h2>What version do want?</h2>
+      <div className="text-center" >
+        <h2 style={{paddingTop: 100}}>{title}</h2>
+      </div>
       <ToggleSwitch
         label="Free"
         onToggleChange={changeToggle}
