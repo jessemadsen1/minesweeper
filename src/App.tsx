@@ -12,14 +12,14 @@ import LeaderBoard from './components/Pages/LeaderBoard';
 
 
 
-
 const App: FC = () => {
 
+ 
   return (
     <>
       <NavBar />
       <div>
-        <BrowserRouter>
+        <BrowserRouter basename="/minesweeper">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pricing" element={<Pricing />} />
