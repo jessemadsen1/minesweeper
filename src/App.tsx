@@ -21,11 +21,11 @@ const App: FC = () => {
       <div>
         <BrowserRouter basename="/minesweeper">
           <Routes>
-            <HashRouter>
+
             <Route path="/" element={<Home />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/leader-board" element={<LeaderBoard />} />
-            </HashRouter>
+  
           </Routes>
         </BrowserRouter>
       </div>
