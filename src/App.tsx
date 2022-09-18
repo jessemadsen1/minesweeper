@@ -19,7 +19,7 @@ const App: FC = () => {
     <>
       <NavBar />
       <div>
-        <BrowserRouter basename="/minesweeper">
+        <BrowserRouter >
           <Routes>
 
             <Route path="/" element={<Home />} />
