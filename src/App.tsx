@@ -19,15 +19,12 @@ const App: FC = () => {
     <>
       <NavBar />
       <div>
-        <BrowserRouter >
           <Routes>
-
             <Route path="/" element={<Home />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/leader-board" element={<LeaderBoard />} />
-  
           </Routes>
-        </BrowserRouter>
+
       </div>
     </>
   );
