@@ -30,9 +30,11 @@ const numCols = 10;
   };
 
 const Home: FC = () => {
+  useRef();
   const [grid, setGrid] = useState(() => {
     return initTiles();
   });
+
 
   const [divColor, setDivColor] = useState("cyan");
 
