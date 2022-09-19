@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./ToggleSwitch.css";
-import Card from "../UI/Card";
+import Card from "react-bootstrap/Card";
 
 type ToggleSwitchProps ={
   label: string,
