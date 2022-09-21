@@ -5,37 +5,20 @@ import apiClient from "./http-common";
 import TutorialService from "../Services/TutorialService";
 
 function QueryExample() {
-  const [postTitle, setPostTitle] = useState("");
-  const [postDescription, setPostDescription] = useState("");
-  const get_id = useRef(null);
-  const get_title = useRef(null);
+
+  const get_id = useRef<HTMLInputElement>(null);
   const [getResult, setGetResult] = useState("");
-  const [postResult, setPostResult] = useState<string | null>(null);
 
   const fortmatResponse = (res: { status: string | number; headers: Record<string, string>; data: never; statusText?: string; }) => {
     return JSON.stringify(res, null, 2);
   };
 
-  async function getAllData() {
-
-      const res = await apiClient.get("/tutorials");
-
-      const result = {
-        status: res.status + "-" + res.statusText,
-        headers: res.headers,
-        data: res.data,
-      };
-
-      setGetResult(fortmatResponse(result));
-    
-  }
-
   async function getDataById() {
-    const id = get_id.current;
-
+    const id = get_id.current?.value;
+    console.log("id: " + id)
     if (id) {
         const res = await apiClient.get(
-          `https://catfact.ninja/facts?max_length=60&limit=${id}`
+          `https://catfact.ninja/breeds?limit=${id}`
         );
 
         const result = {
@@ -46,29 +29,6 @@ function QueryExample() {
         };
 
         setGetResult(fortmatResponse(result));
-
-    }
-  }
-
-  async function getDataByTitle() {
-    const title = get_title.current;
-
-    if (title) {
-        // const res = await instance.get(`/tutorials?title=${title}`);
-        const res = await apiClient.get("/tutorials", {
-          params: {
-            title: title,
-          },
-        });
-
-        const result = {
-          status: res.status + "-" + res.statusText,
-          headers: res.headers,
-          data: res.data,
-        };
-
-        setGetResult(fortmatResponse(result));
-
     }
   }
     const clearGetOutput = () => {
@@ -80,12 +40,13 @@ function QueryExample() {
       <div id="app" className="container">
         <div className="card">
           <div className="card-header">
-
-
             <div className="card-body">
               <div className="input-group input-group-sm">
-                <button className="btn btn-sm btn-primary" onClick={getAllData}>
-                  Cat Facts
+                <button
+                  className="btn btn-sm btn-primary"
+                  onClick={getDataById}
+                >
+                  Cat Breed
                 </button>
 
                 <input
@@ -94,15 +55,14 @@ function QueryExample() {
                   className="form-control ml-2"
                   placeholder="number"
                 />
-                <div className="input-group-append">
+                {/* <div className="input-group-append">
                   <button
                     className="btn btn-sm btn-primary"
                     onClick={getDataById}
                   >
                     Number
                   </button>
-                </div>
-
+                </div> */}
 
                 <button
                   className="btn btn-sm btn-warning ml-2"

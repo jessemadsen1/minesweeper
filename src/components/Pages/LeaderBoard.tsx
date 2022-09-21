@@ -60,5 +60,5 @@ function LeaderBoard() {
     );
 }
 
-export default LeaderBoard;
+export default React.memo(LeaderBoard);
 
