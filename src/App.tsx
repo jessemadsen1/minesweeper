@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 import Pricing from "./components/Pages/Pricing";
 import Home from "./components/Pages/Home";
 import LeaderBoard from './components/Pages/LeaderBoard';
+import QueryExample  from './components/Pages/QueryExample';
 
 
 
@@ -19,11 +20,12 @@ const App: FC = () => {
     <>
       <NavBar />
       <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/leader-board" element={<LeaderBoard />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/leader-board" element={<LeaderBoard />} />
+          <Route path="/queryexample" element={<QueryExample />} />
+        </Routes>
       </div>
     </>
   );
