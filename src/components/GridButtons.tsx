@@ -5,9 +5,10 @@ import "./GridButtons.css";
 
 type GridButtonProp = {
   clearBoard: () => void;
+  onStart: () => void;
 };
 
-const GridButtons = ({ clearBoard }: GridButtonProp) => {
+const GridButtons = ({ clearBoard, onStart }: GridButtonProp) => {
   const onClearHandler = () => {
     clearBoard();
   };
@@ -15,7 +16,7 @@ const GridButtons = ({ clearBoard }: GridButtonProp) => {
   return (
     <ButtonToolbar aria-label="Toolbar with Button groups">
       <div className="buttons is-centered pt-5">
-        <button className="button mx-2">
+        <button className="button mx-2" onClick={onStart}>
           <span className="icon">
             <Play />
           </span>

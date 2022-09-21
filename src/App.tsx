@@ -24,7 +24,6 @@ const App: FC = () => {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/leader-board" element={<LeaderBoard />} />
           </Routes>
-
       </div>
     </>
   );

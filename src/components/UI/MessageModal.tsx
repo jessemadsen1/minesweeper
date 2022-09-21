@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import Card from './Card';
+import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/Button";
 import classes from './MessageModal.module.css';
 

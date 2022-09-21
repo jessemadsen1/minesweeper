@@ -5,29 +5,30 @@ import { FC, useState, useRef, useCallback } from "react";
 import "./Home.css";
 
 import GridButtons from "../GridButtons";
+import Stopwatch from "./Stopwatch";
 
 const numRows = 10;
 const numCols = 10;
 
-  const initTiles = (): number[][] => {
-    const rows = [];
-    for (let i = 0; i < numRows; i++) {
-      rows.push(Array.from(Array(numCols), () => 0));
-    }
-    return rows;
-  };
+const initTiles = (): number[][] => {
+  const rows = [];
+  for (let i = 0; i < numRows; i++) {
+    rows.push(Array.from(Array(numCols), () => 0));
+  }
+  return rows;
+};
 
-  const checkIfHit = (i: number, k: number) => {
-    const rows = [];
-    const checkRows = [];
-    checkRows[0] = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0];
-    for (let i = 0; i < numRows; i++) {
-      rows.push(Array.from(Array(numCols), () => 0));
-    }
-    if (i > 0) return false;
-    if (checkRows[i][k] === 1) return true;
-    else return false;
-  };
+const checkIfHit = (i: number, k: number) => {
+  const rows = [];
+  const checkRows = [];
+  checkRows[0] = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0];
+  for (let i = 0; i < numRows; i++) {
+    rows.push(Array.from(Array(numCols), () => 0));
+  }
+  if (i > 0) return false;
+  if (checkRows[i][k] === 1) return true;
+  else return false;
+};
 
 const Home: FC = () => {
   useRef();
@@ -35,7 +36,8 @@ const Home: FC = () => {
     return initTiles();
   });
 
-
+  const [onStart, setOnStart] = useState(false);
+  const [onStop, setOnStop] = useState(false);
   const [divColor, setDivColor] = useState("cyan");
 
   const bombTiles = (): number[][] => {
@@ -54,12 +56,21 @@ const Home: FC = () => {
       rows.push(Array.from(Array(numCols), () => 0));
     }
     setGrid(rows);
+    onStopHandler();
+  };
+
+  const onStartHandler = () => {
+    setOnStart(true);
+  };
+  const onStopHandler = () => {
+    setOnStop(true);
   };
 
   return (
     <>
       <div className="container has-text-centered py-5">
         <h1 className="title is-uppercase">Mine Sweeper</h1>
+        <Stopwatch onStart={onStart} onStop={onStop} />
         <div
           style={{
             display: "grid",
@@ -93,7 +104,10 @@ const Home: FC = () => {
           )}
         </div>
         <div className="is-centered">
-          <GridButtons clearBoard={clearTiles} />
+          <GridButtons
+            clearBoard={clearTiles}
+            onStart={onStartHandler}
+          />
         </div>
       </div>
     </>
