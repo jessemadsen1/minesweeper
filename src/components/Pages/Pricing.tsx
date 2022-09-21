@@ -1,10 +1,12 @@
 
-import { stringify } from "querystring";
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import ToggleSwitch from "../Switch/ToggleSwitch";
 import MessageModal from "../UI/MessageModal";
 
 
+// const toggleFunction = (state: any, action: any) => {
+//   return
+// };
 
 function Pricing() {
   type Modal = {
@@ -13,6 +15,11 @@ function Pricing() {
   };
   const [toggleState1, setToggleState1] = useState(false);
   const [toggleState2, setToggleState2] = useState(false);
+
+  // const [allTogglState, dispatchToggle] = useReducer(toggleFunction), {
+  //   value: boolean = false
+  // };
+
   const [modal, setModal] = useState<{title: string; message: string, }>({
     title: '',
     message: ''

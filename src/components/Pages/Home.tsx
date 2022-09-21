@@ -64,6 +64,7 @@ const Home: FC = () => {
   };
   const onStopHandler = () => {
     setOnStop(true);
+    setOnStart(false);
   };
 
   return (
