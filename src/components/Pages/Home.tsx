@@ -1,7 +1,6 @@
 import * as React from "react";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { FC, useState, useRef, useCallback } from "react";
+import { FC, useState, useRef, useReducer } from "react";
 import "./Home.css";
 
 import GridButtons from "../GridButtons";
@@ -9,6 +8,67 @@ import Stopwatch from "./Stopwatch";
 
 const numRows = 10;
 const numCols = 10;
+
+type Reducer<State, Action> = (state: State, action: Action) => State;
+
+type State = {
+  value: number;
+};
+
+const initialCounterState: State = {
+  value: 0,
+};
+
+enum ActionKind {
+  Increase = "INCREASE",
+  Decrease = "DECREASE",
+  Clear = "CLEAR",
+}
+
+type Action = {
+  type: ActionKind;
+  payload: number;
+};
+
+const increaseAction: Action = {
+  type: ActionKind.Increase,
+  payload: 1,
+};
+
+const decreaseAction: Action = {
+  type: ActionKind.Decrease,
+  payload: 1,
+};
+
+const clearAction: Action = {
+  type: ActionKind.Clear,
+  payload: 0,
+};
+
+function counterReducer(state: State, action: Action): State {
+  const { type, payload } = action;
+
+  switch (type) {
+    case ActionKind.Increase:
+      return {
+        ...state,
+        value: state.value + action.payload,
+      };
+
+    case ActionKind.Decrease:
+      return {
+        ...state,
+        value: state.value - action.payload,
+      };
+    case ActionKind.Clear:
+      return {
+        ...state,
+        value: 0,
+      };
+    default:
+      return state;
+  }
+}
 
 const initTiles = (): number[][] => {
   const rows = [];
@@ -31,7 +91,7 @@ const checkIfHit = (i: number, k: number) => {
 };
 
 const Home: FC = () => {
-  useRef();
+  const [state, dispatch] = useReducer(counterReducer, initialCounterState);
   const [grid, setGrid] = useState(() => {
     return initTiles();
   });
@@ -57,6 +117,7 @@ const Home: FC = () => {
     }
     setGrid(rows);
     onStopHandler();
+    dispatch(clearAction);
   };
 
   const onStartHandler = () => {
@@ -86,11 +147,13 @@ const Home: FC = () => {
                 className="div_hover"
                 key={`${i}-${k}`}
                 onClick={() => {
-                  // Deep clone grid
                   let newGrid = JSON.parse(JSON.stringify(grid));
                   newGrid[i][k] = grid[i][k] ? 0 : 1;
                   setGrid(newGrid);
+
                   {
+                    if (newGrid[i][k] == 1) dispatch(increaseAction);
+                    else dispatch(decreaseAction);
                     if (checkIfHit(i, k)) setGrid(bombTiles());
                   }
                 }}
@@ -103,12 +166,10 @@ const Home: FC = () => {
               ></div>
             ))
           )}
+          <div>Count: {state.value}</div>
         </div>
         <div className="is-centered">
-          <GridButtons
-            clearBoard={clearTiles}
-            onStart={onStartHandler}
-          />
+          <GridButtons clearBoard={clearTiles} onStart={onStartHandler} />
         </div>
       </div>
     </>
