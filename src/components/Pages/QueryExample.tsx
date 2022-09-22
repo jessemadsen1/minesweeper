@@ -3,14 +3,32 @@ import { useQuery, useMutation } from "react-query";
 import { JsxFragment } from "typescript";
 import apiClient from "./http-common";
 import TutorialService from "../Services/TutorialService";
+import CatCard from "../Cats/CatCard";
+
+    type Cat = {
+      breed: string;
+      country: string;
+      orign: string;
+      coat: string;
+      pattern: string;
+    };
 
 function QueryExample() {
 
   const get_id = useRef<HTMLInputElement>(null);
   const [getResult, setGetResult] = useState("");
+  const [cats , setCats] = useState<{breed: string;
+      country: string;
+      orign: string;
+      coat: string;
+      pattern: string;}[]>([])
 
-  const fortmatResponse = (res: { status: string | number; headers: Record<string, string>; data: never; statusText?: string; }) => {
-    return JSON.stringify(res, null, 2);
+  const fortmatResponse = (res: {  data:{ data: any;}}) => {
+    let temp: Cat[] = JSON.parse(JSON.stringify(res.data.data, null, 2));
+    setCats(temp)
+    return (""
+
+    );
   };
 
   async function getDataById() {
@@ -22,11 +40,10 @@ function QueryExample() {
         );
 
         const result = {
-          data: res.data,
-          status: res.status,
-          statusText: res.statusText,
-          headers: res.headers,
+
+          data: res.data
         };
+
 
         setGetResult(fortmatResponse(result));
     }
@@ -77,6 +94,19 @@ function QueryExample() {
                   <pre>{getResult}</pre>
                 </div>
               )}
+              <div>
+                {cats.map((temp: any) => {
+                    return (
+                      <CatCard
+                        breed={temp.breed}
+                        country={temp.country}
+                        orign={temp.orign}
+                        coat={temp.coat}
+                        pattern={temp.pattern}
+                      />
+                    );
+                })}
+              </div>
             </div>
           </div>
         </div>
