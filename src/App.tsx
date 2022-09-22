@@ -10,6 +10,7 @@ import Pricing from "./components/Pages/Pricing";
 import Home from "./components/Pages/Home";
 import LeaderBoard from './components/Pages/LeaderBoard';
 import QueryExample  from './components/Pages/QueryExample';
+import LoginForm from './components/LoginForm/LoginForm';
 
 
 
@@ -25,6 +26,7 @@ const App: FC = () => {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/leader-board" element={<LeaderBoard />} />
           <Route path="/queryexample" element={<QueryExample />} />
+          <Route path="/loginform" element={<LoginForm />} />
         </Routes>
       </div>
     </>
