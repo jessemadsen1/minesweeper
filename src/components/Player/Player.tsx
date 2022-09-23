@@ -16,18 +16,18 @@ const Player =({id,name,score}:PlayerProps)=> {
  };
 
           return (
-            <p style={{ paddingTop: "1rem" }}>
+            <div style={{ paddingTop: "1rem" }}>
               <div className="d-flex justify-content-center ">
-                <p>
+                <div>
                   <Card style={{ width: "18rem" }}>
                     <div className="card text-center">
                       <div className="card-header">{id}</div>
-                      <div>{getName(name,score)}</div>
+                      <div>{getName(name, score)}</div>
                     </div>
                   </Card>
-                </p>
+                </div>
               </div>
-            </p>
+            </div>
           );
 }
 

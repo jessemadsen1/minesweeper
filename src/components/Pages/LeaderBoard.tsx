@@ -45,7 +45,7 @@ function LeaderBoard() {
         <div>
           {DUMMY_PLAYERS.map((p) => {
             if (hide === false) {
-              return <Player id={p.id} name={p.name} score={p.score} />;
+              return <Player id={p.id} name={p.name} score={p.score} key={Math.random()}/>
             }
             return null;
           })}

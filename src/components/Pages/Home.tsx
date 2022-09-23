@@ -9,7 +9,6 @@ import Stopwatch from "./Stopwatch";
 const numRows = 10;
 const numCols = 10;
 
-type Reducer<State, Action> = (state: State, action: Action) => State;
 
 type State = {
   value: number;
@@ -46,7 +45,7 @@ const clearAction: Action = {
 };
 
 function counterReducer(state: State, action: Action): State {
-  const { type, payload } = action;
+  const { type } = action;
 
   switch (type) {
     case ActionKind.Increase:

@@ -15,9 +15,9 @@ const CatCard = ({ breed, country, orign, coat, pattern }: CatProps) => {
 
 
   return (
-    <p style={{ paddingTop: "1rem" }}>
+    <div style={{ paddingTop: "1rem" }}>
       <div className="d-flex justify-content-center ">
-        <p>
+        <div>
           <Card style={{ width: "18rem" }}>
             <div className="card text-center">
               <div className="card-header">{breed}</div>
@@ -27,9 +27,9 @@ const CatCard = ({ breed, country, orign, coat, pattern }: CatProps) => {
               <div>pattern: {pattern}</div>
             </div>
           </Card>
-        </p>
+        </div>
       </div>
-    </p>
+    </div>
   );
 };
 

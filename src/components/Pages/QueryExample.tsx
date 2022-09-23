@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useQuery, useMutation } from "react-query";
-import { JsxFragment } from "typescript";
 import apiClient from "./http-common";
-import TutorialService from "../Services/TutorialService";
 import CatCard from "../Cats/CatCard";
 
     type Cat = {
@@ -23,12 +20,10 @@ function QueryExample() {
       coat: string;
       pattern: string;}[]>([])
 
-  const fortmatResponse = (res: {  data:{ data: any;}}) => {
+  const fortmatResponse = (res: {data:{ data: any;}}) => {
     let temp: Cat[] = JSON.parse(JSON.stringify(res.data.data, null, 2));
     setCats(temp)
-    return (""
-
-    );
+    return ("");
   };
 
   async function getDataById() {
@@ -72,15 +67,6 @@ function QueryExample() {
                   className="form-control ml-2"
                   placeholder="number"
                 />
-                {/* <div className="input-group-append">
-                  <button
-                    className="btn btn-sm btn-primary"
-                    onClick={getDataById}
-                  >
-                    Number
-                  </button>
-                </div> */}
-
                 <button
                   className="btn btn-sm btn-warning ml-2"
                   onClick={clearGetOutput}
@@ -103,6 +89,7 @@ function QueryExample() {
                         orign={temp.orign}
                         coat={temp.coat}
                         pattern={temp.pattern}
+                        key={Math.random()} 
                       />
                     );
                 })}
