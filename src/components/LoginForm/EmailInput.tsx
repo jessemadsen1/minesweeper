@@ -3,24 +3,22 @@ import { ChangeEvent } from 'react';
 
 
 type EmailInputProps = {
-  value: string;
   onChange: (newValue: string) => void;
 };
 
-const EmailInput = ({ value, onChange }: EmailInputProps) => {
+const EmailInput = ({ onChange }: EmailInputProps) => {
 
   return (
-    <label>
-      Your email:
-      <input
-        type="email"
-        value={value}
-        onChange={(e: ChangeEvent) =>
-          (e: React.ChangeEvent<HTMLInputElement>) => {
-             return e.target.value;
-          }}
-      />
-    </label>
+    <input
+      name="email"
+      id="email"
+      type="email"
+      placeholder="Email"
+      onChange={(e: ChangeEvent) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        return e.target.value;
+      }}
+      required
+    />
   );
 };
 

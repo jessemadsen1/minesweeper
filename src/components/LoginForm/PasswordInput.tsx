@@ -2,21 +2,22 @@ import * as React from "react";
 import { ChangeEvent } from "react";
 
 type PasswordInputProps = {
-  value: string;
   onChange: (newValue: string) => void;
 };
 
-const PasswordInput: React.FC<PasswordInputProps> = ({ value, onChange }) => {
+const PasswordInput: React.FC<PasswordInputProps> = ({ onChange }) => {
 
   return (
-    <label>
-      Your password:
-      <input
-        type="text"
-        value={value}
-
-      />
-    </label>
+    <input
+      name="password"
+      id="password"
+      type="password"
+      placeholder="Password"
+      onChange={(e: ChangeEvent) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        return e.target.value;
+      }}
+      required
+    />
   );
 };
 
