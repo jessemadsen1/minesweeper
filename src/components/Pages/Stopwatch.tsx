@@ -29,6 +29,8 @@ const Stopwatch = ({ onStart, onStop }: StopWatchProps) => {
   useEffect(() => {
     startHandler(onStart);
     stopHandler(onStop);
+    if(onStop == true)
+      clearInterval(timerIdRef.current);
     return () => clearInterval(timerIdRef.current);
   }, [onStart, onStop]);
   return (
