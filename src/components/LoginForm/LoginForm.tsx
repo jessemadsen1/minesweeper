@@ -20,6 +20,7 @@ const LoginForm = () => {
   const onChange = () => {
     console.log("got here");
   };
+  
   const updateEmail = useCallback(
     (newValue: string): void => setEmail(newValue),
     [setEmail]
